@@ -9,8 +9,8 @@ public class ClientController {
 
     private ClientService clientService;
 
-    public ClientController(ClientService clientService) {
-        this.clientService = clientService;
+    public ClientController() {
+        this.clientService = new ClientService();
     }
 
     public boolean addClient(Client client) throws SQLException {

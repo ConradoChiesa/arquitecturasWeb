@@ -1,6 +1,6 @@
 package service;
 
-import dao.ClientDAOImpl;
+import daoImpl.ClientDAOImpl;
 import entity.Client;
 
 import java.sql.SQLException;
@@ -9,8 +9,8 @@ public class ClientService {
 
     private ClientDAOImpl clientDAOImpl;
 
-    public ClientService(ClientDAOImpl clientDAOImpl) {
-        this.clientDAOImpl = clientDAOImpl;
+    public ClientService() {
+        this.clientDAOImpl = new ClientDAOImpl();
     }
 
     public boolean addClient(Client client) throws SQLException {

@@ -1,12 +1,13 @@
-package dao;
+package daoImpl;
 
+import dao.ClientDAO;
 import persintenceConnection.ConnectionDB;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class ClientDAOImpl implements ClientDAO{
+public class ClientDAOImpl implements ClientDAO {
 
     private ConnectionDB connectionDB;
 
@@ -14,22 +15,6 @@ public class ClientDAOImpl implements ClientDAO{
         this.connectionDB = new ConnectionDB();
     }
 
-    /* Ejemplo *
-
-
-        private void addPerson(Connection connection, int id, String name, int years) throws SQLException {
-            String insert = "INSERT INTO persona (id, nombre, edad) VALUES (?, ?, ?)";
-            PreparedStatement ps = connection.prepareStatement(insert);
-            ps.setInt(1, id);
-            ps.setString(2, name);
-            ps.setInt(3, years);
-            ps.executeUpdate();
-            ps.close();
-            connection.commit();
-
-        }
-
-         */
     public boolean addClient(int idClient, String name, String email) throws SQLException {
         try {
             Connection connection = connectionDB.getInstance();

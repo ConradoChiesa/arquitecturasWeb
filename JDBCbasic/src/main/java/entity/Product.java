@@ -1,35 +1,36 @@
 package entity;
 
 public class Product {
-    private int idProducto;
 
-    private String nombre;
+    private int idProduct;
+
+    private String name;
 
     private int amount;
 
     public Product() {
     }
 
-    public Product(int idProducto, String nombre, int amount) {
-        this.idProducto = idProducto;
-        this.nombre = nombre;
+    public Product(int idProduct, String name, int amount) {
+        this.idProduct = idProduct;
+        this.name = name;
         this.amount = amount;
     }
 
-    public int getIdProducto() {
-        return idProducto;
+    public int getIdProduct() {
+        return idProduct;
     }
 
-    public void setIdProducto(int idProducto) {
-        this.idProducto = idProducto;
+    public void setIdProduct(int idProduct) {
+        this.idProduct = idProduct;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getAmount() {

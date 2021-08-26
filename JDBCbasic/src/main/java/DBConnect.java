@@ -1,10 +1,10 @@
+import controller.BillController;
 import controller.ClientController;
-import dao.ClientDAOImpl;
+import entity.Bill;
 import entity.Client;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
-import service.ClientService;
 
 
 import java.io.FileReader;
@@ -16,16 +16,22 @@ public class DBConnect {
 
         //CreateTables createTables = new CreateTables();
         new CreateTables();
-        ClientDAOImpl clientDAOImpl = new ClientDAOImpl();
-        ClientService clientService = new ClientService(clientDAOImpl);
-        ClientController clientController = new ClientController(clientService);
+        ClientController clientController = new ClientController();
+        BillController billController = new BillController();
 
-        CSVParser parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader("files/clientes.csv"));
-        for(CSVRecord row: parser) {
+        CSVParser clientes = CSVFormat.DEFAULT.withHeader().parse(new FileReader("files/clientes.csv"));
+        for(CSVRecord row: clientes) {
             int idCliente = Integer.parseInt(row.get("idCliente"));
             String name = row.get("nombre");
             String email = row.get("email");
             clientController.addClient(new Client(idCliente, name, email));
+        }
+
+        CSVParser facturas = CSVFormat.DEFAULT.withHeader().parse(new FileReader("files/facturas.csv"));
+        for(CSVRecord row: facturas) {
+            int idBill = Integer.parseInt(row.get("idFactura"));
+            int idCliente = Integer.parseInt(row.get("idCliente"));
+            billController.addBill(new Bill(idBill, idCliente));
         }
     }
 

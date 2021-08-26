@@ -2,42 +2,42 @@ package entity;
 
 public class BillProduct {
 
-    private int idFactura;
+    private int idBill;
 
-    private int idProducto;
+    private int idProduct;
 
-    private int cantidad;
+    private int quantity;
 
-    public BillProduct(int idFactura, int idProducto, int cantidad) {
-        this.idFactura = idFactura;
-        this.idProducto = idProducto;
-        this.cantidad = cantidad;
+    public BillProduct(int idBill, int idProduct, int quantity) {
+        this.idBill = idBill;
+        this.idProduct = idProduct;
+        this.quantity = quantity;
     }
 
     public BillProduct() {
     }
 
-    public int getIdFactura() {
-        return idFactura;
+    public int getIdBill() {
+        return idBill;
     }
 
-    public void setIdFactura(int idFactura) {
-        this.idFactura = idFactura;
+    public void setIdBill(int idBill) {
+        this.idBill = idBill;
     }
 
-    public int getIdProducto() {
-        return idProducto;
+    public int getIdProduct() {
+        return idProduct;
     }
 
-    public void setIdProducto(int idProducto) {
-        this.idProducto = idProducto;
+    public void setIdProduct(int idProduct) {
+        this.idProduct = idProduct;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }
