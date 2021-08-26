@@ -5,10 +5,16 @@ import java.sql.SQLException;
 
 public class CreateTables {
 
-    private ConnectionDB connectionDB = new ConnectionDB();
+    private final ConnectionDB connectionDB = new ConnectionDB();
 
+    //Creador det tablas necesarias para la ejecución
     public CreateTables() throws SQLException {
         Connection connection = connectionDB.getInstance();
+/*
+        String dataBase = "CREATE DATABASE IF NOT EXISTS exampleDB";
+        connection.prepareStatement(dataBase).execute();
+        connection.commit();
+*/
         String client = "CREATE TABLE IF NOT EXISTS client(" +
                 "idClient INT," +
                 "name VARCHAR(500)," +
@@ -38,6 +44,6 @@ public class CreateTables {
         connection.prepareStatement(billProduct).execute();
         connection.commit();
 
-        connectionDB.connectionClose();
+        //connection.close();
     }
 }

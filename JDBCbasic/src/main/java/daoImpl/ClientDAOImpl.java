@@ -7,17 +7,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class ClientDAOImpl implements ClientDAO {
+public class ClientDAOImpl implements ClientDAO, AutoCloseable {
 
-    private ConnectionDB connectionDB;
+
 
     public ClientDAOImpl() {
-        this.connectionDB = new ConnectionDB();
     }
 
-    public boolean addClient(int idClient, String name, String email) throws SQLException {
+    @Override
+    public boolean addClient(int idClient, String name, String email) throws Exception {
         try {
-            Connection connection = connectionDB.getInstance();
+            Connection connection = ConnectionDB.getInstance();
             String add = "INSERT INTO client(idClient, name, email) VALUES (?, ?, ?)";
             PreparedStatement ps = connection.prepareStatement(add);
             ps.setInt(1, idClient);
@@ -28,10 +28,14 @@ public class ClientDAOImpl implements ClientDAO {
             connection.commit();
         } catch (Exception e) {
             e.printStackTrace();
-            connectionDB.connectionClose();
+            //ConnectionDB.connectionClose();
             return false;
         }
-        connectionDB.connectionClose();
         return true;
+    }
+
+    @Override
+    public void close() throws Exception {
+
     }
 }

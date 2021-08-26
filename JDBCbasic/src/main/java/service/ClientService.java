@@ -13,7 +13,11 @@ public class ClientService {
         this.clientDAOImpl = new ClientDAOImpl();
     }
 
-    public boolean addClient(Client client) throws SQLException {
+    public ClientService(ClientDAOImpl clientDAOImpl) {
+        this.clientDAOImpl = clientDAOImpl;
+    }
+
+    public boolean addClient(Client client) throws Exception {
         int idClient = client.getIdClient();
         String name = client.getName();
         String email = client.getEmail();

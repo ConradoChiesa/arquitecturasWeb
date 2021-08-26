@@ -14,9 +14,6 @@ public class BillProduct {
         this.quantity = quantity;
     }
 
-    public BillProduct() {
-    }
-
     public int getIdBill() {
         return idBill;
     }

@@ -18,4 +18,5 @@ public class BillService {
         int idClient = bill.getIdCliente();
         return billDAOImpl.addBill(idBill, idClient);
     }
+
 }

@@ -1,27 +1,26 @@
 package daoImpl;
 
-import dao.BillDAO;
+import dao.ProductDAO;
 import persintenceConnection.ConnectionDB;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class BillDAOImpl implements BillDAO {
+public class ProductDAOImpl implements AutoCloseable, ProductDAO {
 
-
-    public BillDAOImpl() {
-
+    public ProductDAOImpl() {
     }
 
     @Override
-    public boolean addBill(int idBill, int idClient) throws SQLException {
+    public boolean addProduct(int idProduct, String name, float amount) throws Exception {
         try {
             Connection connection = ConnectionDB.getInstance();
-            String add = "INSERT INTO bill(idBill, idClient) VALUES (?, ?)";
+            String add = "INSERT INTO product(idProduct, name, amount) VALUES (?, ?, ?)";
             PreparedStatement ps = connection.prepareStatement(add);
-            ps.setInt(1, idBill);
-            ps.setInt(2, idClient);
+            ps.setInt(1, idProduct);
+            ps.setString(2, name);
+            ps.setFloat(3, amount);
             ps.executeUpdate();
             ps.close();
             connection.commit();
@@ -30,5 +29,10 @@ public class BillDAOImpl implements BillDAO {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void close() throws Exception {
+
     }
 }

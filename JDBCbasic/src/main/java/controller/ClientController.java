@@ -13,7 +13,7 @@ public class ClientController {
         this.clientService = new ClientService();
     }
 
-    public boolean addClient(Client client) throws SQLException {
+    public boolean addClient(Client client) throws Exception {
         return clientService.addClient(client);
     }
 }

@@ -13,7 +13,7 @@ public class BillController {
         this.billService = new BillService();
     }
 
-    public boolean  addBill(Bill bill) throws SQLException {
+    public boolean addBill(Bill bill) throws SQLException {
         return billService.addBill(bill);
     }
 }
