@@ -46,7 +46,6 @@ public class DBConnect {
 
         CSVParser Productos = CSVFormat.DEFAULT.withHeader().parse(new FileReader("files/productos.csv"));
         for(CSVRecord row: Productos) {
-            //    public Product(int idProduct, String name, int amount) {
             int idProduct = Integer.parseInt(row.get("idProducto"));
             String name = row.get("nombre");
             float amount = Integer.parseInt(row.get("valor"));
@@ -59,9 +58,6 @@ public class DBConnect {
         Iterator<BestClients> bestClientsIterator = apiController.getBestClients().iterator();
         while (bestClientsIterator.hasNext()) {
             System.out.println(bestClientsIterator.next().toString());
-
         }
-
     }
-
 }
