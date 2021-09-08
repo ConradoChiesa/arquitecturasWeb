@@ -15,7 +15,7 @@ public class ConnectionDB {
             e.printStackTrace();;
             System.exit(1);
         }
-        String uri = "jdbc:mysql://localhost:3306/exampleDB";
+        String uri = "jdbc:mysql://localhost:3306/exampleDB?createDatabaseIfNotExist=true";
         try {
             connection = DriverManager.getConnection(uri, "root", "123");
             connection.setAutoCommit(false);

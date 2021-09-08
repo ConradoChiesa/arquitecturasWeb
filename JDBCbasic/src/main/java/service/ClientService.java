@@ -3,8 +3,6 @@ package service;
 import daoImpl.ClientDAOImpl;
 import entity.Client;
 
-import java.sql.SQLException;
-
 public class ClientService {
 
     private ClientDAOImpl clientDAOImpl;

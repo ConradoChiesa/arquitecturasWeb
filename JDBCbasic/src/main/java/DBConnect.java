@@ -1,19 +1,11 @@
-import controller.BillController;
-import controller.BillProductController;
-import controller.ClientController;
-import controller.ProductController;
-import entity.Bill;
-import entity.BillProduct;
-import entity.Client;
-import entity.Product;
+import controller.*;
+import entity.*;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
-
 import java.io.FileReader;
-import java.io.IOException;
-import java.sql.SQLException;
+import java.util.Iterator;
 
 public class DBConnect {
     public static void main(String[] args) throws Exception {
@@ -26,6 +18,7 @@ public class DBConnect {
         BillController billController = new BillController();
         BillProductController billProductController = new BillProductController();
         ProductController productController = new ProductController();
+        ApiController apiController = new ApiController();
 
         //Lectura de archivos CSV y carga de datos
         CSVParser clientes = CSVFormat.DEFAULT.withHeader().parse(new FileReader("files/clientes.csv"));
@@ -60,14 +53,15 @@ public class DBConnect {
             productController.addProduct(new Product(idProduct, name, amount));
         }
 
+        System.out.println("Producto con el que más se recaudo: ");
+        System.out.println(apiController.getProductMaxProfit().toString());
+        System.out.println("\nLista de mejores clientes: ");
+        Iterator<BestClients> bestClientsIterator = apiController.getBestClients().iterator();
+        while (bestClientsIterator.hasNext()) {
+            System.out.println(bestClientsIterator.next().toString());
+
+        }
+
     }
-/*
-Query punto 3
-SELECT * FROM product p join billProduct bp ON p.idProduct = bp.idProduct WHERE (SELECT MAX(p.amount*bp.quantity)) limit 1;
- */
-
-
-
-
 
 }
