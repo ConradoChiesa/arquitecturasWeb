@@ -10,7 +10,7 @@ public class Matricula implements Serializable {
     @OneToOne
     private Carrera carrera;
     @Id
-    @OneToOne@JoinColumn(name = "nroLibreta", unique = true)
+    @OneToOne@JoinColumn(name = "estudiante_nroLibreta", unique = true)
     @MapsId
     private Estudiante estudiante;
     private Date inscripcion;
