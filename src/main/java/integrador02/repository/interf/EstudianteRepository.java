@@ -9,6 +9,7 @@ public interface EstudianteRepository {
     Estudiante getEstudianteByAge (int age);
     Estudiante getEstudianteByGender(String gender);
     Estudiante getEstudianteByCity(String city);
-    Estudiante getEstudianteByUniversityId(String universityId);
-
+    Estudiante getEstudianteByUniversityId(Long universityId);
+    Estudiante saveEstudiante (Estudiante estudiante);
+    void deleteEstudiante (Estudiante estudiante);
 }

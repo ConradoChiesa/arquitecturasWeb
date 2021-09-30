@@ -6,8 +6,8 @@ import javax.persistence.*;
 public class Carrera {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "carreraID")
-    private int id_carrera;
+    @Column(name = "carreraID", unique = true)
+    private Integer id_carrera;
     private String nombre;
 
     public Carrera() {
@@ -19,7 +19,7 @@ public class Carrera {
         this.nombre = nombre;
     }
 
-    public int getId_carrera() {
+    public Integer getId_carrera() {
         return id_carrera;
     }
 

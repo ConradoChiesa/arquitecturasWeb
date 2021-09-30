@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Estudiante {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "personaID")
+    @Column(name = "personaID", unique = true)
     private int id_persona;
     private String nombre;
     private String apellido;
@@ -31,7 +31,7 @@ public class Estudiante {
         this.id_estudiante = id_estudiante;
     }
 
-    public int getId_persona() {
+    public Integer getId_persona() {
         return id_persona;
     }
 
@@ -75,7 +75,7 @@ public class Estudiante {
         this.ciudad = ciudad;
     }
 
-    public int getId_estudiante() {
+    public Integer getId_estudiante() {
         return id_estudiante;
     }
 

@@ -23,8 +23,8 @@ public class Insert {
         em.persist(carr1);
         em.persist(carr2);
         //Carga de Matriculas
-        Matricula mat1 = new Matricula(carr1, est1, Date.valueOf("2018-03-30"), false);
-        Matricula mat2 = new Matricula(carr2, est2, Date.valueOf("2017-04-30"), false);
+        Matricula mat1 = new Matricula(carr1.getId_carrera(), est1.getId_estudiante(), Date.valueOf("2018-03-30"), Date.valueOf("2022-03-30"));
+        Matricula mat2 = new Matricula(carr2.getId_carrera(), est2.getId_estudiante(), Date.valueOf("2017-04-30"), Date.valueOf("2023-03-30"));
         em.persist(mat1);
         em.persist(mat2);
         em.getTransaction().commit();

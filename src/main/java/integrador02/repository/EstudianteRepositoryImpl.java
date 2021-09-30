@@ -64,11 +64,30 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
     }
 
     @Override
-    public Estudiante getEstudianteByUniversityId(String universityId) {
+    public Estudiante getEstudianteByUniversityId(Long universityId) {
         TypedQuery<Estudiante> q = em.createQuery(
                 "SELECT e FROM Estudiante e WHERE e.id_estudiante = :universityId", Estudiante.class
         );
         q.setParameter("universityId", universityId);
         return q.getSingleResult();
+    }
+
+    @Override
+    public Estudiante saveEstudiante(Estudiante estudiante) {
+        if (estudiante.getId_estudiante() == null) {
+            em.persist(estudiante);
+        } else {
+            estudiante = em.merge(estudiante);
+        }
+        return estudiante;
+    }
+
+    @Override
+    public void deleteEstudiante(Estudiante estudiante) {
+        if (em.contains(estudiante)) {
+            em.remove(estudiante);
+        } else {
+            em.merge(estudiante);
+        }
     }
 }
