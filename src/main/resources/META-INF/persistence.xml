@@ -7,7 +7,9 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
         <!--Entidades a persistir-->
-        <!--<class>integrador02.entity.Estudiante</class>-->
+        <class>integrador02.entity.Carrera</class>
+        <class>integrador02.entity.Matricula</class>
+        <class>integrador02.entity.Estudiante</class>
 
         <properties>
             <!-- Propiedades de configuracion de JDBC para Derby -->
