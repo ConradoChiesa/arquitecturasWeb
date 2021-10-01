@@ -13,8 +13,8 @@ public class Insert {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         //Carga de Estudiantes
-        Estudiante est1 = new Estudiante("Joaquin", "Mancini", 28, "Hombre", "Tandil", 1);
-        Estudiante est2 = new Estudiante("Maria Jose", "Mancini", 24, "Mujer", "Tandil", 2);
+        Estudiante est1 = new Estudiante("Joaquin", "Mancini", 28, 'm', "Tandil", 1);
+        Estudiante est2 = new Estudiante("Maria Jose", "Mancini", 24, 'f', "Tandil", 2);
         em.persist(est1);
         em.persist(est2);
         //Carga de Carreras

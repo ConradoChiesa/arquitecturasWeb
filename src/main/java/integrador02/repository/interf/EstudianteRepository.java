@@ -7,7 +7,7 @@ public interface EstudianteRepository {
     Estudiante getEstudianteByName (String firstName);
     Estudiante getEstudianteByLastname (String lastName);
     Estudiante getEstudianteByAge (int age);
-    Estudiante getEstudianteByGender(String gender);
+    Estudiante getEstudianteByGender(char gender);
     Estudiante getEstudianteByCity(String city);
     Estudiante getEstudianteByUniversityId(Long universityId);
     Estudiante saveEstudiante (Estudiante estudiante);

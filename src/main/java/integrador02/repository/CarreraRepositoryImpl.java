@@ -6,6 +6,7 @@ import integrador02.repository.interf.CarreraRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class CarreraRepositoryImpl implements CarreraRepository {
     private EntityManager em;
@@ -45,5 +46,14 @@ public class CarreraRepositoryImpl implements CarreraRepository {
         } else {
             em.merge(carrera);
         }
+    }
+
+    //2f
+    public List<Carrera> getCarrerasConInscriptos(){
+        String query = "";
+        TypedQuery<Carrera> q = em.createQuery(
+                "SELECT m, sum(m.matriculaId.id_carrera) from Matricula m", Carrera.class
+        );
+        return q.getResultList();
     }
 }

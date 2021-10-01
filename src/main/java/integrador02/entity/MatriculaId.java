@@ -1,12 +1,15 @@
 package integrador02.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
 public class MatriculaId implements Serializable {
+    @Column(name = "carreraID")
     private int id_carrera;
+    @Column(name = "estudianteID")
     private int id_estudiante;
 
     public MatriculaId() {

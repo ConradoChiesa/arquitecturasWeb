@@ -12,7 +12,7 @@ public class Estudiante {
     private String apellido;
     @Column(name = "anios")
     private int edad;
-    private String genero;
+    private char genero;
     private String ciudad;
     @Column(name = "nroLibreta", unique = true)
     private int id_estudiante;
@@ -21,7 +21,7 @@ public class Estudiante {
         super();
     }
 
-    public Estudiante(String nombre, String apellido, int edad, String genero, String ciudad, int id_estudiante) {
+    public Estudiante(String nombre, String apellido, int edad, char genero, String ciudad, int id_estudiante) {
         super();
         this.nombre = nombre;
         this.apellido = apellido;
@@ -59,11 +59,11 @@ public class Estudiante {
         this.edad = edad;
     }
 
-    public String getGenero() {
+    public char getGenero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
+    public void setGenero(char genero) {
         this.genero = genero;
     }
 

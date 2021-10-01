@@ -34,7 +34,7 @@ public class LoadTables {
             String nombre = row.get("nombre");
             String apellido = row.get("apellido");
             int edad = Integer.parseInt(row.get("edad"));
-            String genero = row.get("genero");
+            char genero = row.get("genero").charAt(0);
             String ciudad = row.get("ciudad");
             int id_estudiante = Integer.parseInt(row.get("id_estudiante"));
             eri.saveEstudiante(new Estudiante(nombre, apellido, edad, genero, ciudad, id_estudiante));

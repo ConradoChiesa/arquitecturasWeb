@@ -5,6 +5,7 @@ import integrador02.repository.interf.EstudianteRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class EstudianteRepositoryImpl implements EstudianteRepository {
     private EntityManager em;
@@ -46,7 +47,7 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
     }
 
     @Override
-    public Estudiante getEstudianteByGender(String gender) {
+    public Estudiante getEstudianteByGender(char gender) {
         TypedQuery<Estudiante> q = em.createQuery(
                 "SELECT e FROM Estudiante e WHERE e.genero = :gender", Estudiante.class
         );
@@ -63,6 +64,7 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
         return q.getSingleResult();
     }
 
+    //2d
     @Override
     public Estudiante getEstudianteByUniversityId(Long universityId) {
         TypedQuery<Estudiante> q = em.createQuery(
@@ -72,6 +74,7 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
         return q.getSingleResult();
     }
 
+    //2a
     @Override
     public Estudiante saveEstudiante(Estudiante estudiante) {
         if (estudiante.getId_estudiante() == null) {
@@ -89,5 +92,32 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
         } else {
             em.merge(estudiante);
         }
+    }
+
+    //2c
+    public List<Estudiante> getEstudiantesByCriteria(String lastName) {
+        TypedQuery<Estudiante> q = em.createQuery(
+                "SELECT e FROM Estudiante e WHERE e.apellido = :lastName ORDER BY e.id_estudiante ASC", Estudiante.class
+        );
+        q.setParameter("lastName", lastName);
+        return q.getResultList();
+    }
+
+    //2e
+    public List<Estudiante> getEstudiantesByGender(char gender) {
+        TypedQuery<Estudiante> q = em.createQuery(
+                "SELECT e FROM Estudiante e WHERE e.genero = :gender", Estudiante.class
+        );
+        q.setParameter("gender", gender);
+        return q.getResultList();
+    }
+
+    public List<Estudiante> getEstudiantesDeCarreraByCity(String study, String city){
+        TypedQuery<Estudiante> q = em.createQuery(
+                "SELECT e FROM Estudiante e WHERE e.id_estudiante IN (SELECT m.matriculaId.id_estudiante FROM Matricula m, Carrera c WHERE m.matriculaId.id_carrera=c.id_carrera AND c.nombre= :study) AND e.ciudad = :city", Estudiante.class
+        );
+        q.setParameter("study", study);
+        q.setParameter("city", city);
+        return q.getResultList();
     }
 }

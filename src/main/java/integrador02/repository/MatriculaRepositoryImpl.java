@@ -19,6 +19,7 @@ public class MatriculaRepositoryImpl implements MatriculaRepository {
         return em.find(Matricula.class, mi);
     }
 
+    //2b
     @Override
     public Matricula saveMatricula(Matricula matricula) {
         if (matricula.getMatriculaId().getId_carrera() == null && matricula.getMatriculaId().getId_estudiante() == null) {
