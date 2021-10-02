@@ -50,9 +50,8 @@ public class CarreraRepositoryImpl implements CarreraRepository {
 
     //2f
     public List<Carrera> getCarrerasConInscriptos(){
-        String query = "";
-        TypedQuery<Carrera> q = em.createQuery(
-                "SELECT m, sum(m.matriculaId.id_carrera) from Matricula m", Carrera.class
+        TypedQuery<Carrera> q = (TypedQuery<Carrera>) em.createNativeQuery(
+                "select c.* from integrador02.Carrera c, (select m.carreraID, count(m.carreraID) cantIns from integrador02.Matricula m where m.graduacion is null group by m.carreraID order by cantIns) as ce where c.carreraID=ce.carreraID", Carrera.class
         );
         return q.getResultList();
     }

@@ -3,7 +3,6 @@ package integrador02.entity;
 import com.sun.istack.Nullable;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.sql.Date;
 
 @Entity
