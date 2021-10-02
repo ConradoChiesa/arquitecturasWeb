@@ -1,0 +1,5 @@
+1_Cargar tablas con datos corriendo LoadTables.java
+
+2_Ejecutar Inserts con Insert.java para testear los puntos 2a y 2b
+
+3_Ejecutar Select.java para realizar las consultas pedidas desde el punto 2c al punto 2g

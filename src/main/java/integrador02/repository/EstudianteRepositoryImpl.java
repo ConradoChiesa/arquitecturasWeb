@@ -66,7 +66,7 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 
     //2d
     @Override
-    public Estudiante getEstudianteByUniversityId(Long universityId) {
+    public Estudiante getEstudianteByUniversityId(int universityId) {
         TypedQuery<Estudiante> q = em.createQuery(
                 "SELECT e FROM Estudiante e WHERE e.id_estudiante = :universityId", Estudiante.class
         );

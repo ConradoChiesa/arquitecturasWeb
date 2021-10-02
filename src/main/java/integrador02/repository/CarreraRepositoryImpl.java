@@ -2,6 +2,7 @@ package integrador02.repository;
 
 import integrador02.entity.Carrera;
 import integrador02.entity.Estudiante;
+import integrador02.entity.Report;
 import integrador02.repository.interf.CarreraRepository;
 
 import javax.persistence.EntityManager;
@@ -54,5 +55,11 @@ public class CarreraRepositoryImpl implements CarreraRepository {
                 "select c.* from integrador02.Carrera c, (select m.carreraID, count(m.carreraID) cantIns from integrador02.Matricula m where m.graduacion is null group by m.carreraID order by cantIns) as ce where c.carreraID=ce.carreraID", Carrera.class
         );
         return q.getResultList();
+    }
+
+    //3
+
+    public List<Report> getReporteDeCarreras() {
+        return null;
     }
 }
