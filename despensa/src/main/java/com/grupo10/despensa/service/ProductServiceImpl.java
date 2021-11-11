@@ -5,7 +5,7 @@ import com.grupo10.despensa.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductServiceImpl {
@@ -29,4 +29,12 @@ public class ProductServiceImpl {
         productRepository.delete(product);
     }
 
+    public Product getById(Integer id) {
+        Product product = new Product();
+        Optional<Product> productOptional = productRepository.findById(id);
+        if (productOptional.isPresent()) {
+            product = productOptional.get();
+        }
+        return product;
+    }
 }
