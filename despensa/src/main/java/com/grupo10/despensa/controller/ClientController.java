@@ -1,5 +1,6 @@
 package com.grupo10.despensa.controller;
 
+import com.grupo10.despensa.entity.Product;
 import com.grupo10.despensa.service.ClientServiceImpl;
 import com.grupo10.despensa.entity.Client;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,11 @@ public class ClientController {
     @DeleteMapping("/remove")
     public void remove(Client client){
         clientService.removeClient(client);
+    }
+
+    @PostMapping("/buy")
+    public Product buyProduct(Product product, Client client) throws Exception {
+        return clientService.buyProduct(product, client);
     }
 
 }
