@@ -69,11 +69,12 @@ public class ClientServiceImpl {
     }
 
     private int persistBuy(Client client) {
-        Client clientOptional = clientRepository.findById(client.getIdClient()).get();
+       /* Client clientOptional = clientRepository.findById(client.getIdClient()).get();
         int buys = clientOptional.getBuysOfToday();
         buys += 1;
         client.setBuysOfToday(buys);
         clientRepository.save(client);
-        return buys;
+        return buys;*/
+        return 0;
     }
 }

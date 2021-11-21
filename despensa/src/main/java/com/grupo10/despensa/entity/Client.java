@@ -18,6 +18,4 @@ public class Client {
     @OneToMany
     private List<Product> shoppingCart;
 
-    private int buysOfToday;
-
 }

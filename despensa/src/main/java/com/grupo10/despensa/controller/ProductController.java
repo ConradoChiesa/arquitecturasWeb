@@ -30,6 +30,7 @@ public class ProductController {
 
     @GetMapping("/getById")
     public Product getProductById(@RequestParam Integer id){
+        LOGGER.info("Getting product by id... ");
         return productService.getById(id);
     }
 
@@ -43,4 +44,5 @@ public class ProductController {
         productService.removeProduct(product);
     }
 
+    @GetMapping()
 }
