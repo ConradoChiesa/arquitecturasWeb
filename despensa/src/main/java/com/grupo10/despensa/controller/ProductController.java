@@ -2,24 +2,31 @@ package com.grupo10.despensa.controller;
 
 import com.grupo10.despensa.entity.Product;
 import com.grupo10.despensa.service.ProductServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path="/product")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProductController {
 
     @Autowired
     private ProductServiceImpl productService;
 
+    private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
+
     @PostMapping(path = "/add")
-    public void addNewUser(@RequestBody Product product) {
+    public void addProduct(@RequestBody Product product) {
         productService.addProduct(product);
     }
 
-    @GetMapping(path="/getAll")
+    @GetMapping(path="/getProducts")
     public @ResponseBody
-    Iterable<Product> getAllUsers() { return productService.getAllProducts(); }
+    Iterable<Product> getProducts() {
+       LOGGER.info("Loading products... ");
+    return productService.getProducts(); }
 
     @GetMapping("/getById")
     public Product getProductById(@RequestParam Integer id){

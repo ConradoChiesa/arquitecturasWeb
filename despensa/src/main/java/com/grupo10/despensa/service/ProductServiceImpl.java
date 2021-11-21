@@ -13,7 +13,7 @@ public class ProductServiceImpl {
     @Autowired
     private ProductRepository productRepository;
 
-    public Iterable<Product> getAllProducts() {
+    public Iterable<Product> getProducts() {
         return productRepository.findAll();
     }
 
