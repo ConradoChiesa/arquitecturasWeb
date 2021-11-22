@@ -47,7 +47,7 @@ public class ClientServiceImpl {
         }
         return client;
     }
-
+//REVISAR!!!!
     //Si es posible llevar a cabo la compra se devuelve el producto comprado
     public Product buyProduct(Product product, Client client) throws Exception {
         int dailyBuys = dailyBuysOf(client);

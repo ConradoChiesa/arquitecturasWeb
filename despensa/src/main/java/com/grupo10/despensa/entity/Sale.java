@@ -11,6 +11,7 @@ import java.util.Date;
 public class Sale {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idSale;
 
     @OneToOne
