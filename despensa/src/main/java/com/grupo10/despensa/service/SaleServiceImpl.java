@@ -21,10 +21,8 @@ public class SaleServiceImpl {
     @PersistenceContext
     EntityManager em;
 
-    public Sale buyProduct(Client client, Product product) {
-        Sale sale = new Sale();
-        sale.setProduct(product);
-        sale.setClient(client);
+    public Sale sell(Sale sale) {
+
         sale.setDate(new Date());
         return saleRepository.save(sale);
     }

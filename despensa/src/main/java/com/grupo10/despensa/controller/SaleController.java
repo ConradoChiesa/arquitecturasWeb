@@ -1,7 +1,6 @@
 package com.grupo10.despensa.controller;
 
 import com.grupo10.despensa.entity.Client;
-import com.grupo10.despensa.entity.Product;
 import com.grupo10.despensa.entity.Sale;
 import com.grupo10.despensa.service.SaleServiceImpl;
 import org.slf4j.Logger;
@@ -18,10 +17,10 @@ public class SaleController {
 
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
-    @PostMapping("/buyProduct")
-    public Sale buyProduct(@RequestBody Client client, Product product) {
+    @PostMapping("/sell")
+    public Sale buyProduct(@RequestBody Sale sale) {
         LOGGER.info("Selling product... ");
-        return saleService.buyProduct(client, product);
+        return saleService.sell(sale);
     }
 
     @GetMapping("/getSales")

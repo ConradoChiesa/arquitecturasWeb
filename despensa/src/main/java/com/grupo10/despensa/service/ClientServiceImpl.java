@@ -17,8 +17,8 @@ public class ClientServiceImpl {
     @Autowired
     private ClientRepository clientRepository;
 
-    @Value("${despensa.max.shoppingCart.size}")
-    private int maxCartSize;
+    @Value("${despensa.max.product.sell}")
+    private int maxBuysSize;
 
     @PersistenceContext
     private EntityManager clientManager;
@@ -51,7 +51,7 @@ public class ClientServiceImpl {
     //Si es posible llevar a cabo la compra se devuelve el producto comprado
     public Product buyProduct(Product product, Client client) throws Exception {
         int dailyBuys = dailyBuysOf(client);
-        if (client.getShoppingCart().size() > maxCartSize) {
+        if (client.getShoppingCart().size() > maxBuysSize) {
             client.getShoppingCart().add(product);
             persistBuy(client);
             clientRepository.save(client);

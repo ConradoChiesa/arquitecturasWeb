@@ -2,6 +2,8 @@ package com.grupo10.despensa.controller;
 
 import com.grupo10.despensa.entity.Product;
 import com.grupo10.despensa.service.ProductServiceImpl;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +21,15 @@ public class ProductController {
 
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success Operation"),
+            @ApiResponse(code = 403, message = "Bad Request"),
+            @ApiResponse(code = 404, message = "Resurce Not Found"),
+            @ApiResponse(code = 500, message = "Internal Server Error")
+    })
+
     @PostMapping(path = "/add")
-    public void addProduct(@RequestBody Product product) {
+    public void addProduct(@RequestBody Product product) throws Exception {
         productService.addProduct(product);
     }
 
@@ -41,7 +50,7 @@ public class ProductController {
     }
 
     @PutMapping("/update")
-    public Product updateProduct(Product product) {
+    public Product updateProduct(Product product) throws Exception {
         return productService.updateProduct(product);
     }
 

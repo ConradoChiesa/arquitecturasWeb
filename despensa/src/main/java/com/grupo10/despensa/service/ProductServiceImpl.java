@@ -1,14 +1,14 @@
 package com.grupo10.despensa.service;
 
 import com.grupo10.despensa.entity.Product;
-import com.grupo10.despensa.entity.Sale;
 import com.grupo10.despensa.repository.ProductRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,11 +21,17 @@ public class ProductServiceImpl {
     @PersistenceContext
     EntityManager em;
 
+    private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
+
     public Iterable<Product> getAll() {
         return productRepository.findAll();
     }
 
-    public Product addProduct(Product product) {
+    public Product addProduct(Product product) throws Exception {
+        Product p = productRepository.findByName(product.getName());
+        if (p != null) {
+            throw new Exception("Ya existe un producto con ese nombre");
+        }
         return productRepository.save(product);
     }
 
@@ -33,7 +39,11 @@ public class ProductServiceImpl {
         productRepository.saveAll(products);
     }
 
-    public Product updateProduct(Product product) {
+    //Este servicio trae la cantidad que hay en la bbdd y los actualiza
+    public Product updateProduct(Product product) throws Exception {
+        Product prodPersisted = productRepository.findByName(product.getName());
+        LOGGER.info(prodPersisted.toString());
+            product.setQuantity(product.getQuantity() + prodPersisted.getQuantity());
         return productRepository.save(product);
     }
 
