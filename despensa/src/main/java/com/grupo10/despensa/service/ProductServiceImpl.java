@@ -50,14 +50,14 @@ public class ProductServiceImpl {
         return product;
     }
 
-    public Product getBestSeller() throws Exception {
-        Iterable<Product> product = em.createQuery("SELECT prod from Product prod where prod.idProduct = " +
-                        "(select sale.product.idProduct from Sale sale group by sale.product.idProduct)")
-                .getResultList();
-        if (product.iterator().hasNext()) {
-            return product.iterator().next();
-        }
-        throw new Exception("No se encontro producto");
-    }
+//    public Product getBestSeller() throws Exception {
+//        Iterable<Product> product = em.createQuery("SELECT prod from Product prod where prod.idProduct = " +
+//                        "(select sale.product.idProduct from Sale sale group by sale.product.idProduct)")
+//                .getResultList();
+//        if (product.iterator().hasNext()) {
+//            return product.iterator().next();
+//        }
+//        throw new Exception("No se encontro producto");
+//    }
 
 }

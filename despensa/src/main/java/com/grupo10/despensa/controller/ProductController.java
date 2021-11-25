@@ -50,9 +50,9 @@ public class ProductController {
         productService.removeProduct(product);
     }
 
-    @GetMapping("/bestSeller")
-    public Product getBestSeller() throws Exception {
-        LOGGER.info("Getting Best Seller... ");
-        return productService.getBestSeller();
-    }
+//    @GetMapping("/bestSeller")
+//    public Product getBestSeller() throws Exception {
+//        LOGGER.info("Getting Best Seller... ");
+//        return productService.getBestSeller();
+//    }
 }

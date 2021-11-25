@@ -19,11 +19,11 @@ public class SaleController {
 
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
-    @PostMapping("/buyProduct")
-    public Sale buyProduct(@RequestBody Client client, Product product) {
-        LOGGER.info("Selling product... ");
-        return saleService.buyProduct(client, product);
-    }
+//    @PostMapping("/buyProduct")
+//    public Sale buyProduct(@RequestBody Client client, Product product) {
+//        LOGGER.info("Selling product... ");
+//        return saleService.buyProduct(client, product);
+//    }
 
     @GetMapping("/getSales")
     public Iterable<Sale> getSales() {

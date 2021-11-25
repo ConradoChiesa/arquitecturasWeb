@@ -1,9 +1,12 @@
 package com.grupo10.despensa.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -11,22 +14,13 @@ import java.util.Date;
 public class Sale {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Integer idSale;
-
-    @OneToOne
-    private Product product;
-
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Client client;
-
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "idItem")
+    private List<Item> items;
     private Date date;
 
-    //Como funciona esto en realidad que fecha es la que carga? la persiste mejor lo dejo hecho en el servicio
-    /*
-    @PrePersist
-    protected void onCreate() {
-        date = new Date();
-    }
-    */
 }

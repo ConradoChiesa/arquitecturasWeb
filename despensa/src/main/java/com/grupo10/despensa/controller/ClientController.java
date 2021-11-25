@@ -38,9 +38,9 @@ public class ClientController {
         clientService.removeClient(client);
     }
 
-    @PostMapping("/buy")
-    public Product buyProduct(Product product, Client client) throws Exception {
-        return clientService.buyProduct(product, client);
-    }
+//    @PostMapping("/buy")
+//    public Product buyProduct(Product product, Client client) throws Exception {
+//        return clientService.buyProduct(product, client);
+//    }
 
 }

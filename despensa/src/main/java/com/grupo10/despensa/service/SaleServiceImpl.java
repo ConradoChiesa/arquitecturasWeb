@@ -21,13 +21,13 @@ public class SaleServiceImpl {
     @PersistenceContext
     EntityManager em;
 
-    public Sale buyProduct(Client client, Product product) {
-        Sale sale = new Sale();
-        sale.setProduct(product);
-        sale.setClient(client);
-        sale.setDate(new Date());
-        return saleRepository.save(sale);
-    }
+//    public Sale buyProducts(Client client, Product product) {
+//        Sale sale = new Sale();
+//        sale.setProduct(product);
+//        sale.setClient(client);
+//        sale.setDate(new Date());
+//        return saleRepository.save(sale);
+//    }
 
     public Iterable<Sale> getSales() {
         return saleRepository.findAll();

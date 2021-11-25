@@ -49,17 +49,17 @@ public class ClientServiceImpl {
     }
 //REVISAR!!!!
     //Si es posible llevar a cabo la compra se devuelve el producto comprado
-    public Product buyProduct(Product product, Client client) throws Exception {
-        int dailyBuys = dailyBuysOf(client);
-        if (client.getShoppingCart().size() > maxCartSize) {
-            client.getShoppingCart().add(product);
-            persistBuy(client);
-            clientRepository.save(client);
-        } else {
-            throw new Exception("Lo sentimos, ya no podemos venderte más productos por hoy");
-        }
-        return product;
-    }
+//    public Product buyProduct(Product product, Client client) throws Exception {
+//        int dailyBuys = dailyBuysOf(client);
+//        if (client.getShoppingCart().size() > maxCartSize) {
+//            client.getShoppingCart().add(product);
+//            persistBuy(client);
+//            clientRepository.save(client);
+//        } else {
+//            throw new Exception("Lo sentimos, ya no podemos venderte más productos por hoy");
+//        }
+//        return product;
+//    }
 
     private int dailyBuysOf(Client client) {
 

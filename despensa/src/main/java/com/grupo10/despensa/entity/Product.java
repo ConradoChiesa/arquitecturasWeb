@@ -1,6 +1,5 @@
 package com.grupo10.despensa.entity;
 
-import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -11,11 +10,12 @@ import javax.persistence.*;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Integer idProduct;
-
+    @Column(unique = true)
     private String name;
     private String description;
-    private Integer quantity;
+    private Integer stock;
+    private Integer price;
 
 }
