@@ -7,8 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,9 +15,6 @@ public class ProductServiceImpl {
 
     @Autowired
     private ProductRepository productRepository;
-
-    @PersistenceContext
-    EntityManager em;
 
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
@@ -42,8 +37,7 @@ public class ProductServiceImpl {
     //Este servicio trae la cantidad que hay en la bbdd y los actualiza
     public Product updateProduct(Product product) throws Exception {
         Product prodPersisted = productRepository.findByName(product.getName());
-        LOGGER.info(prodPersisted.toString());
-            product.setQuantity(product.getQuantity() + prodPersisted.getQuantity());
+        product.setQuantity(product.getQuantity() + prodPersisted.getQuantity());
         return productRepository.save(product);
     }
 
@@ -61,13 +55,17 @@ public class ProductServiceImpl {
     }
 
     public Product getBestSeller() throws Exception {
-        Iterable<Product> product = em.createQuery("SELECT prod from Product prod where prod.idProduct = " +
+        /*Iterable<Product> product = em.createQuery("SELECT prod from Product prod where prod.idProduct = " +
                         "(select sale.product.idProduct from Sale sale group by sale.product.idProduct)")
                 .getResultList();
         if (product.iterator().hasNext()) {
             return product.iterator().next();
-        }
+        }*/
         throw new Exception("No se encontro producto");
+    }
+
+    public Product getByName(Product product) {
+        return productRepository.findByName(product.getName());
     }
 
 }

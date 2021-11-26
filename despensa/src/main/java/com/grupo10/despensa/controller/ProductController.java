@@ -48,14 +48,19 @@ public class ProductController {
         LOGGER.info("Getting product by id... ");
         return productService.getById(id);
     }
+    @GetMapping("/getByName")
+    public Product getById(@RequestBody Product product){
+        LOGGER.info("Getting product by id... ");
+        return productService.getByName(product);
+    }
 
     @PutMapping("/update")
-    public Product updateProduct(Product product) throws Exception {
+    public Product updateProduct(@RequestBody Product product) throws Exception {
         return productService.updateProduct(product);
     }
 
     @DeleteMapping("/remove")
-    public void remove(Product product){
+    public void remove(@RequestBody Product product){
         productService.removeProduct(product);
     }
 
