@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -14,19 +15,12 @@ public class Sale {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idSale;
 
-    @OneToOne
-    private Product product;
+    @OneToMany
+    private List<Product> products;
 
     @OneToOne
     private Client client;
 
     private Date date;
 
-    //Como funciona esto en realidad que fecha es la que carga? la persiste mejor lo dejo hecho en el servicio
-    /*
-    @PrePersist
-    protected void onCreate() {
-        date = new Date();
-    }
-    */
 }

@@ -19,8 +19,8 @@ public class SaleController {
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
     @PostMapping("/sell")
-    public Sale buyProduct(@RequestBody Sale sale) {
-        LOGGER.info("Selling product... ");
+    public Sale buyProduct(@RequestBody Sale sale) throws Exception {
+        LOGGER.info("Selling product... "+ sale.getProducts().toString());
         return saleService.sell(sale);
     }
 
@@ -28,8 +28,9 @@ public class SaleController {
     public Iterable<Sale> getSales() {
         return saleService.getSales();
     }
+
     @GetMapping("/getSaleByIdClient")
-    public Iterable<Sale> getSaleByIdClient(Client client) {
+    public Iterable<Sale> getSaleByIdClient(@RequestBody Client client) {
         return saleService.getSaleByIdClient(client);
     }
 }
