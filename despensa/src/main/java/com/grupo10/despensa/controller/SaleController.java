@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path="/sales")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class SaleController {
 
     @Autowired
@@ -20,7 +20,7 @@ public class SaleController {
 
     @PostMapping("/sell")
     public Sale buyProduct(@RequestBody Sale sale) throws Exception {
-        LOGGER.info("Selling product... "+ sale.getProducts().toString());
+        LOGGER.info("Selling product... ");
         return saleService.sell(sale);
     }
 
@@ -31,6 +31,6 @@ public class SaleController {
 
     @GetMapping("/getSaleByIdClient")
     public Iterable<Sale> getSaleByIdClient(@RequestBody Client client) {
-        return saleService.getSaleByIdClient(client);
+        return saleService.getSalesByIdClient(client);
     }
 }

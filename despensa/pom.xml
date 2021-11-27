@@ -81,6 +81,11 @@
             <version>5.3.12</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-el</artifactId>
+            <version>9.0.54</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -46,21 +46,18 @@ public class ProductServiceImpl {
     }
 
     public Product getById(Integer id) {
+        LOGGER.info("Service getById");
         Product product = new Product();
         Optional<Product> productOptional = productRepository.findById(id);
         if (productOptional.isPresent()) {
             product = productOptional.get();
         }
+        LOGGER.info(product.toString());
         return product;
     }
 
     public Product getBestSeller() throws Exception {
-        /*Iterable<Product> product = em.createQuery("SELECT prod from Product prod where prod.idProduct = " +
-                        "(select sale.product.idProduct from Sale sale group by sale.product.idProduct)")
-                .getResultList();
-        if (product.iterator().hasNext()) {
-            return product.iterator().next();
-        }*/
+        //
         throw new Exception("No se encontro producto");
     }
 
@@ -68,4 +65,7 @@ public class ProductServiceImpl {
         return productRepository.findByName(product.getName());
     }
 
+    public void selledProduct(Product product) {
+        productRepository.save(product);
+    }
 }

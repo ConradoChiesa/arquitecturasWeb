@@ -9,4 +9,8 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
 
     @Query("SELECT p FROM Product AS p WHERE p.name = :name")
     Product findByName(@Param("name") String name);
+
+    //@Query("SELECT MAX(p.quantity) FROM Product AS p JOIN Sale AS s " +
+    //        "ON p.idProduct = s.products.WHERE p.name = :name")
+    //Product findBestSeller();
 }

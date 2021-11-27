@@ -4,7 +4,6 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Data
 @Entity
@@ -15,11 +14,9 @@ public class Sale {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idSale;
 
-    @OneToMany
-    private List<Product> products;
+    private Integer idProduct;
 
-    @OneToOne
-    private Client client;
+    private Integer idClient;
 
     private Date date;
 
