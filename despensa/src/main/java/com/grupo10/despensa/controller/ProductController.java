@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path="/product")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = {"http://localhost:4200", "https://despensafrontend-team10.herokuapp.com"})
 public class ProductController {
 
     @Autowired
